@@ -16,7 +16,18 @@ Plug 'tpope/vim-surround'
 
 Plug 'valloric/youcompleteme'
 
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+Plug 'mileszs/ack.vim'
+
 call plug#end()
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
@@ -71,5 +82,32 @@ endfunc
 
 " Toggle between normal and relative numbering.
 nnoremap <leader>r :call NumberToggle()<cr>
+
+let g:ackprg = 'ag --vimgrep'
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+set undofile
+set undodir=/Users/esther_wang/.vim/.vimundo
+
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
+" Use Deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:elixir_docpreview = 0
+
+" Let <Tab> also do completion
+inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
+
+" Close the documentation window when completion is done
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 nnoremap ; :
