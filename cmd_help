@@ -1,0 +1,54 @@
+**NeoVim
+Vim-Plug
+  PlugInstall()
+  PlugUpdate()
+  PlugClean()      Remove unused plugins
+  PlugUpgrade()    Update vim-plug
+
+call NumberToggle()
+
+Ack [options] {pattern} [{directories}]
+search recursively in {directories} (which defaults to the current directory) for the {pattern}.
+http://beyondgrep.com/documentation/
+gv will open in vertical split
+t opens in tab
+
+Ctrl-p search for file
+Ctrl-n NERDTreeToggle
+Ctrl-^ Switch to last file
+
+NERDTreeToggle:
+t opens file in new tab
+i for horizontal split
+s for vert split
+R for refresh
+
+CtrlP Vim:
+<C-v> open in new vsplit
+<C-x> open in new split
+<C-t> open in new tab
+
+pwd
+
+cs {old surround} {new surround}
+Replace old surround symbol with new surround symbol, cursor must be on the segment being modified
+
+g-Ctrl-g to see location
+= will reformat tabs in the indicated block (gg = G reformats whole file)
+
+**Bash/Iterm2
+ag {pattern} [{directories}]
+
+find {directory} -name {pattern}
+recursively searches for a file
+
+**Git
+git checkout -t origin/master -b your-branch
+git config --global push.default current
+git add -p
+
+**Tmux
+prefix + Ctrl-s save session
+prefix + Ctrl-r restore session
+prefix + :source-file <conf_file> to source conf file
+prefix + Ctrl-I install plugins
