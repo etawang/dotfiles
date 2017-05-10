@@ -193,5 +193,6 @@ set clipboard=unnamed
 " Filetype-specific commands
 " Syntax highlight in code files
 au BufRead,BufNewFile *.cs set syntax=ruby
+au BufRead,BufNewFile *.txt set spell
 
 " End General Configurations
