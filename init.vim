@@ -10,7 +10,9 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'junegunn/vim-easy-align'
 
+" Git and Gbrowse
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'scrooloose/syntastic'
 
@@ -95,30 +97,37 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=167 guibg=#fb4934
 " this highlighting.
 autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%'.&tw.'v.', -1)
 
+"Visuals
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of the cursor.
 set relativenumber     	" Show the relativeline numbers on the left side.
+set number              " Show current line number even in relative mode.
+set ruler               " Show the line and column numbers of the cursor.
+
+" Text
 set formatoptions+=o    " Continue comment marker in new lines.
-set formatoptions+=c    " auto-wrap comments using textwidth
-set formatoptions+=n    " smart auto-indenting inside numbered lists
+set formatoptions+=c    " Auto-wrap comments using textwidth
+set formatoptions+=n    " Smart auto-indenting inside numbered lists
+set formatoptions+=1    " Don't break a line after a one-letter word
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=2           " Render TABs using this many spaces.
 set softtabstop=1
 set shiftwidth=2        " Indentation amount for < and > commands.
+set linebreak
 set encoding=utf-8
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
-set esckeys             " Cursor keys in insert mode.
-set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
 " More natural splits
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
+" Movement
+set nostartofline       " Do not jump to first character with page commands.
 if !&scrolloff
   set scrolloff=3       " Show next 3 lines while scrolling.
 endif
@@ -126,15 +135,18 @@ if !&sidescrolloff
   set sidescrolloff=5   " Show next 5 columns while side-scrolling.
 endif
 set display+=lastline
-set nostartofline       " Do not jump to first character with page commands.
+nnoremap j gj
+nnoremap k gk
+nnoremap $ g$
+nnoremap 0 g0
 
+" Search
 set hlsearch            " Highlight search results.
 set ignorecase          " Make searching case insensitive
 set smartcase           " ... unless the query has capital letters.
 set incsearch           " Incremental search.
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 set magic               " Use 'magic' patterns (extended regular expressions).
-set number              " Show current line number even in relative mode.
 
 set statusline=%f\:
 set statusline+=%#warningmsg#
@@ -164,13 +176,22 @@ endfunc
 " Toggle between normal and relative numbering.
 nnoremap <leader>r :call NumberToggle()<cr>
 
+" Turn off highlighting after a search.
+nnoremap <esc> :noh<cr><esc>
+
+" Resize pane widths
+nnoremap <silent> <C-]> <C-w>5>
+nnoremap <silent> <C-[> <C-w>5<
+nnoremap <silent> <TAB>] <C-w>>
+nnoremap <silent> <TAB>[ <C-w><
+
 set undofile
 set undodir=/Users/esther_wang/.config/nvim/.vimundo
 
 set clipboard=unnamed
 
-" Turn off highlighting after a search.
-nnoremap <esc> :noh<cr><esc>
+" Filetype-specific commands
+" Syntax highlight in code files
+au BufRead,BufNewFile *.cs set syntax=ruby
 
-nnoremap ; :
 " End General Configurations
