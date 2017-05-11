@@ -135,10 +135,6 @@ if !&sidescrolloff
   set sidescrolloff=5   " Show next 5 columns while side-scrolling.
 endif
 set display+=lastline
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
-nnoremap 0 g0
 
 " Search
 set hlsearch            " Highlight search results.
@@ -180,10 +176,10 @@ nnoremap <leader>r :call NumberToggle()<cr>
 nnoremap <esc> :noh<cr><esc>
 
 " Resize pane widths
-nnoremap <silent> <C-]> <C-w>5>
-nnoremap <silent> <C-[> <C-w>5<
-nnoremap <silent> <TAB>] <C-w>>
-nnoremap <silent> <TAB>[ <C-w><
+nnoremap <silent> <A-[> <C-w>5<
+nnoremap <silent> <A-]> <C-w>5>
+nnoremap <silent> <A-{> <C-w><
+nnoremap <silent> <A-}> <C-w>>
 
 set undofile
 set undodir=/Users/esther_wang/.config/nvim/.vimundo
