@@ -22,4 +22,4 @@ Set both the Regular font and the Non-ASCII Font in "iTerm > Preferences > Profi
 
 ### Color scheme
 
-Get [base16-circus](https://github.com/stepchowfun/base16-circus).
+Get [base16-circus](https://github.com/stepchowfun/base16-circus-scheme).
