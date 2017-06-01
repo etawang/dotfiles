@@ -7,6 +7,7 @@ update_configs() {
   cp -r home/ ~/
   source ~/.bash_profile
   tmux source-file ~/.tmux.conf
+
   cp -r nvim "$CONFIG_DIR"/
   nvim +PlugInstall +qall
 }
@@ -43,9 +44,12 @@ git clone https://github.com/powerline/fonts.git "$CONFIG_DIR"/fonts
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install --key-bindings --completion --update-rc
 
-# Install vim plugins.
+# Install vim-plug.
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Install tpm (tmux plugin manager).
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 update_configs
 
