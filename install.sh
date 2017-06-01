@@ -35,7 +35,7 @@ pip2 install --user neovim
 # Install base16-shell.
 git clone https://github.com/chriskempson/base16-shell.git "$CONFIG_DIR"/base16-shell
 
-# Install powerline fonts.
+# Install powerline fonts used by vim-airline.
 git clone https://github.com/powerline/fonts.git "$CONFIG_DIR"/fonts
 "$CONFIG_DIR"/fonts/install.sh
 
