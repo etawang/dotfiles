@@ -10,7 +10,9 @@ Plug 'scrooloose/nerdcommenter'
 
 Plug 'junegunn/vim-easy-align'
 
+" Git and Gbrowse
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'scrooloose/syntastic'
 
@@ -22,19 +24,28 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'mileszs/ack.vim'
 
-" Plug 'ctrlpvim/ctrlp.vim'
-
 Plug 'christoomey/vim-tmux-navigator'
-
-Plug 'morhetz/gruvbox'
 
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/plugged/fzf', 'do': './install --bin' }
 
 Plug 'junegunn/fzf.vim'
+
+Plug 'lervag/vimtex'
+
+" Visualized marks
+Plug 'kshenoy/vim-signature'
+
+" Statusline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" Color scheme
+Plug 'chriskempson/base16-vim'
+
 call plug#end()
 
 " Plugin Configurations
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep'
 cnoreabbrev Ack Ack!
 nnoremap <leader>a :Ack!<Space>
 
@@ -56,18 +67,13 @@ let g:fugitive_github_domains = ['github.com', 'git.musta.ch']
 nnoremap <leader>go :Gbrowse<cr>
 vnoremap <leader>go :Gbrowse<cr>
 
-" Open CtrlP vim with C-p
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-
-"Only refreshes the results every 100ms so if you type fast searches don’t pile up
-" let g:ctrlp_lazy_update = 100
-
-"Quicker indexing
-" let g:ctrlp_user_command = 'find %s -type f | egrep -iv "(\.(eot|gif|gz|ico|jpg|jpeg|otf|png|psd|pyc|svg|ttf|woff|zip)$)|(/\.)|((^|\/)tmp\/)"'
-
 " Open nerdtree with C-n
 map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeShowLineNumbers = 1
+
+let g:vimtex_latexmk_enabled = 0
+
+let g:airline_powerline_fonts = 1
 "End PluginConfigurations
 
 " Macros
@@ -91,30 +97,37 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=167 guibg=#fb4934
 " this highlighting.
 autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%'.&tw.'v.', -1)
 
+"Visuals
 set showcmd             " Show (partial) command in status line.
 set showmatch           " Show matching brackets.
 set showmode            " Show current mode.
-set ruler               " Show the line and column numbers of the cursor.
 set relativenumber     	" Show the relativeline numbers on the left side.
+set number              " Show current line number even in relative mode.
+set ruler               " Show the line and column numbers of the cursor.
+
+" Text
 set formatoptions+=o    " Continue comment marker in new lines.
-set formatoptions+=c    " auto-wrap comments using textwidth
-set formatoptions+=n    " smart auto-indenting inside numbered lists
+set formatoptions+=c    " Auto-wrap comments using textwidth
+set formatoptions+=n    " Smart auto-indenting inside numbered lists
+set formatoptions+=1    " Don't break a line after a one-letter word
+set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=2           " Render TABs using this many spaces.
 set softtabstop=1
 set shiftwidth=2        " Indentation amount for < and > commands.
+set linebreak
 set encoding=utf-8
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
-set esckeys             " Cursor keys in insert mode.
-set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
 
 " More natural splits
 set splitbelow          " Horizontal split below current.
 set splitright          " Vertical split to right of current.
 
+" Movement
+set nostartofline       " Do not jump to first character with page commands.
 if !&scrolloff
   set scrolloff=3       " Show next 3 lines while scrolling.
 endif
@@ -122,8 +135,8 @@ if !&sidescrolloff
   set sidescrolloff=5   " Show next 5 columns while side-scrolling.
 endif
 set display+=lastline
-set nostartofline       " Do not jump to first character with page commands.
 
+" Search
 set hlsearch            " Highlight search results.
 set ignorecase          " Make searching case insensitive
 set smartcase           " ... unless the query has capital letters.
@@ -138,37 +151,44 @@ set statusline+=%*
 set statusline+=%=[%4l/%L]\ %3c
 
 " Colors
-let g:gruvbox_italic=1
+" Truecolor
 set termguicolors
-set background=dark
-colorscheme gruvbox
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+" If using base16-shell
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
 endif
-
-" if exists('+colorcolumn')
-  " set colorcolumn=+1 " vertical line at `textwidth` characters
-" endif
 
 " Relative numbering
 function! NumberToggle()
   if(&relativenumber == 1)
     set nornu
-    set number
   else
     set rnu
   endif
 endfunc
+
+" Toggle between normal and relative numbering.
+nnoremap <leader>r :call NumberToggle()<cr>
+
+" Turn off highlighting after a search.
+nnoremap <esc> :noh<cr><esc>
+
+" Resize pane widths
+nnoremap <silent> <A-[> <C-w>5<
+nnoremap <silent> <A-]> <C-w>5>
+nnoremap <silent> <A-{> <C-w><
+nnoremap <silent> <A-}> <C-w>>
 
 set undofile
 set undodir=/Users/esther_wang/.config/nvim/.vimundo
 
 set clipboard=unnamed
 
-" Toggle between normal and relative numbering.
-nnoremap <leader>r :call NumberToggle()<cr>
+" Filetype-specific commands
+" Syntax highlight in code files
+au BufRead,BufNewFile *.cs set syntax=ruby
+au BufRead,BufNewFile *.txt set spell
 
-nnoremap ; :
 " End General Configurations
