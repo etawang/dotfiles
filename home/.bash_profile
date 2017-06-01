@@ -1,3 +1,7 @@
+if [ -f ~/.bashrc ]; then
+   source ~/.bashrc
+fi
+
 . /usr/local/etc/bash_completion.d/git-completion.bash
 . /usr/local/etc/bash_completion.d/git-prompt.sh
 

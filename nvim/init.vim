@@ -189,6 +189,11 @@ set clipboard=unnamed
 " Filetype-specific commands
 " Syntax highlight in code files
 au BufRead,BufNewFile *.cs set syntax=ruby
-au BufRead,BufNewFile *.txt set spell
+
+" Turn on spellcheck
+au BufRead,BufNewFile *.(txt|tex) set spell
+
+" Don't auto-indent tex files
+au BufRead,BufNewFile *.tex set indentexpr=
 
 " End General Configurations
