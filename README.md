@@ -10,6 +10,12 @@ This will install the dotfiles and their dependencies.
 
 Set both the Regular font and the Non-ASCII Font in "iTerm > Preferences > Profiles > Text" to use Meslo LG S Regular for Powerline.
 
+## Updating
+To update the installed dotfiles without attempting a full install of all dependencies, run
+```
+./install.sh --update
+```
+
 ### About
 The programs configured by this repo are bash, tmux, and nvim.
 
