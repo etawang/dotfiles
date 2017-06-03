@@ -182,7 +182,7 @@ nnoremap <silent> <A-{> <C-w><
 nnoremap <silent> <A-}> <C-w>>
 
 set undofile
-set undodir=/Users/esther_wang/.config/nvim/.vimundo
+set undodir=~/.config/nvim/.vimundo
 
 set clipboard=unnamed
 
