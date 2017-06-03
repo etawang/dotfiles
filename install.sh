@@ -22,6 +22,9 @@ for opt in "$@"; do
   esac
 done
 
+# Make sure submodules are up to date.
+cd "$DOTFILES_DIR" && git submodule update --remote --init
+
 brew install neovim/neovim/neovim
 brew install tmux
 brew install reattach-to-user-namespace # Needed for copy and paste from tmux in Mac OSX sierra.
@@ -55,9 +58,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 update_configs
 
 # Install base16-circus.
-BASE16_CIRCUS_DIR="$CONFIG_DIR"/base16-circus-scheme
-git clone git@github.com:stepchowfun/base16-circus-scheme.git "$BASE16_CIRCUS_DIR"
-cp "$BASE16_CIRCUS_DIR"/circus/scripts/base16-circus.sh "$CONFIG_DIR"/base16-shell/scripts
-cp "$BASE16_CIRCUS_DIR"/circus/colors/base16-circus.vim "$CONFIG_DIR"/nvim/plugged/base16-vim/colors
+cp "$DOTFILES_DIR"/base16-circus-scheme/circus/scripts/base16-circus.sh "$CONFIG_DIR"/base16-shell/scripts
+cp "$DOTFILES_DIR"/base16-circus-scheme/circus/colors/base16-circus.vim "$CONFIG_DIR"/nvim/plugged/base16-vim/colors
 source ~/.bash_profile
 base16_circus
