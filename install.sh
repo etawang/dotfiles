@@ -1,14 +1,15 @@
 #!/bin/bash
 set -euf -o pipefail
 
+DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 CONFIG_DIR=~/.config
 
 update_configs() {
-  cp -r home/ ~/
+  cp -r "$DOTFILES_DIR"/home/ ~/
   source ~/.bash_profile
   tmux source-file ~/.tmux.conf
 
-  cp -r nvim "$CONFIG_DIR"/
+  cp -r "$DOTFILES_DIR"/nvim "$CONFIG_DIR"/
   nvim +PlugInstall +qall
 }
 
