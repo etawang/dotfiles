@@ -6,6 +6,7 @@ CONFIG_DIR=~/.config
 
 update_configs() {
   echo "Configuring..."
+  export TMUX=${TMUX:-''}
   cp -r "$DOTFILES_DIR"/home/ ~/
   source ~/.bash_profile
   tmux source-file ~/.tmux.conf
