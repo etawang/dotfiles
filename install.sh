@@ -28,6 +28,13 @@ done
 # Make sure submodules are up to date.
 cd "$DOTFILES_DIR" && git submodule update --remote --init
 
+# Install brew if it doesn't exist. TODO: gate with an if statement
+brew -v > /dev/null 2> /dev/null
+if [[ $? -ne 0 ]]; then
+  echo "Homebrew is not installed. Installing..."
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 echo "Brew installing package dependencies..."
 brew install neovim/neovim/neovim
 brew install tmux
@@ -66,8 +73,8 @@ update_configs
 
 # Install base16-circus.
 echo "Installing color scheme..."
-cp "$DOTFILES_DIR"/base16-circus-scheme/circus/scripts/base16-circus.sh "$CONFIG_DIR"/base16-shell/scripts
-cp "$DOTFILES_DIR"/base16-circus-scheme/circus/colors/base16-circus.vim "$CONFIG_DIR"/nvim/plugged/base16-vim/colors
+cp "$DOTFILES_DIR"/base16-circus-scheme/circus/scripts/base16-circus.sh "$CONFIG_DIR"/base16-shell/scripts/
+cp "$DOTFILES_DIR"/base16-circus-scheme/circus/colors/base16-circus.vim "$CONFIG_DIR"/nvim/plugged/base16-vim/colors/
 source ~/.bash_profile
 base16_circus
 echo "Done!"
