@@ -26,8 +26,8 @@ Plug 'mileszs/ack.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
 
+" Use fuzzy finding to open files
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/plugged/fzf', 'do': './install --bin' }
-
 Plug 'junegunn/fzf.vim'
 
 Plug 'lervag/vimtex'
@@ -65,7 +65,6 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:fugitive_github_domains = ['github.com', 'git.musta.ch']
 
 nnoremap <leader>go :Gbrowse<cr>
-vnoremap <leader>go :Gbrowse<cr>
 
 " Open nerdtree with C-n
 map <C-n> :NERDTreeToggle<CR>
