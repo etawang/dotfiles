@@ -30,6 +30,9 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.config/nvim/plugged/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
+" Better cpp highlighting
+Plug 'octol/vim-cpp-enhanced-highlight'
+
 Plug 'lervag/vimtex'
 
 " Visualized marks

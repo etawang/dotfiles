@@ -26,4 +26,13 @@ al() {
   airlab "$@"
 }
 
+# Git alias for rebasing current branch onto remote branch
+gre() {
+  BRANCH="master"
+  if [ "$1" ]; then
+    BRANCH="$1"
+  fi
+  git fetch origin && git rebase origin/"$BRANCH"
+}
+
 eval "$(rbenv init -)"
