@@ -35,7 +35,7 @@ gre() {
   git fetch origin && git rebase origin/"$BRANCH"
 }
 
+alias gamp="git commit -a --amend --no-edit && git push -f"
+
 eval "$(rbenv init -)"
-
-
 
