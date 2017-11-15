@@ -35,7 +35,15 @@ gre() {
   git fetch origin && git rebase origin/"$BRANCH"
 }
 
-alias gamp="git commit -a --amend --no-edit && git push -f"
+gamp() {
+  ME="Esther"
+  if git log --pretty=format:"%an" -1 | grep "$ME" > /dev/null
+  then
+    git commit -a --amend --no-edit && git push -f
+  else
+    echo "Looks like the most recent commit was not authored by $ME. Make a new commit and try again."
+  fi
+}
 
 eval "$(rbenv init -)"
 
