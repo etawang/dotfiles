@@ -41,6 +41,7 @@ brew install tmux
 brew install reattach-to-user-namespace # Needed for copy and paste from tmux in Mac OSX sierra.
 brew install ripgrep
 brew install git bash-completion
+brew install fd
 
 # It's not necessary to install python and python3 just to get pip, but they're nice to have.
 brew install python3 # Makes pip3 available
