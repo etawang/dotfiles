@@ -20,8 +20,6 @@ Plug 'tpope/vim-surround'
 
 Plug 'tpope/vim-endwise'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
 Plug 'mileszs/ack.vim'
 
 Plug 'christoomey/vim-tmux-navigator'
