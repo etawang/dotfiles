@@ -4,6 +4,7 @@ fi
 
 . /usr/local/etc/bash_completion.d/git-completion.bash
 . /usr/local/etc/bash_completion.d/git-prompt.sh
+# . /usr/local/etc/bash_completion.d/tmuxinator.bash
 
 # Make the prompt look like this:
 # Mon Apr 02 12:06:50 airbnb (master) $
@@ -13,13 +14,19 @@ export CLICOLOR=1
 export LS_COLORS="$LS_COLORS:'di=0;44:'"
 export FZF_DEFAULT_COMMAND='rg --hidden --files -g "!\*.git/\*"'
 
+# Used by tmuxinator to detect default editor.
+export EDITOR='nvim'
+
+# Used by Java.
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # Vi mode for bash
 set -o vi
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
-export PATH="$HOME/.rbenv/bin:~/.local/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:~/.local/bin:$JAVA_HOME/bin:$PATH"
 export PATH=$PATH:~/dev/sysops/optica_tools/
 
 al() {

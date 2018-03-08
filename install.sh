@@ -42,6 +42,7 @@ brew install reattach-to-user-namespace # Needed for copy and paste from tmux in
 brew install ripgrep
 brew install git bash-completion
 brew install fd
+brew install wget
 
 # It's not necessary to install python and python3 just to get pip, but they're nice to have.
 brew install python3 # Makes pip3 available
@@ -64,10 +65,16 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # Install vim-plug.
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install tpm (tmux plugin manager).
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Install tmuxinator.
+gem install tmuxinator
+curl -fLo /usr/local/etc/bash_completion.d/tmuxinator.bash --create-dirs \
+  https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.bash
+
 echo "Done!"
 
 update_configs
