@@ -66,11 +66,7 @@ gco() {
     echo "Could not find local branch $target_branch"
     return
   fi
-
-  git checkout "$base_branch" &&
-    gre "$base_branch" &&
-    git checkout "$target_branch" &&
-    git rebase "$base_branch"
+  git checkout "$target_branch" && gre "$base_branch"
 }
 
 eval "$(rbenv init -)"
