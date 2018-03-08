@@ -28,20 +28,20 @@ al() {
 
 # Git alias for rebasing current branch onto remote branch
 gre() {
-  BRANCH="master"
+  branch="master"
   if [ "$1" ]; then
-    BRANCH="$1"
+    branch="$1"
   fi
-  git fetch origin && git rebase origin/"$BRANCH"
+  git fetch origin && git rebase origin/"$branch"
 }
 
 gamp() {
-  ME="Esther"
-  if git log --pretty=format:"%an" -1 | grep "$ME" > /dev/null
+  me="Esther"
+  if git log --pretty=format:"%an" -1 | grep "$me" > /dev/null
   then
     git commit -a --amend --no-edit && git push -f
   else
-    echo "Looks like the most recent commit was not authored by $ME. Make a new commit and try again."
+    echo "Looks like the most recent commit was not authored by $me. Make a new commit and try again."
   fi
 }
 
