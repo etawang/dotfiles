@@ -12,6 +12,7 @@ update_configs() {
   tmux source-file ~/.tmux.conf
 
   cp -r "$DOTFILES_DIR"/nvim "$CONFIG_DIR"/
+  cp -r "$DOTFILES_DIR"/tmuxinator "$CONFIG_DIR"/
   nvim +PlugInstall +qall
   echo "Done!"
 }

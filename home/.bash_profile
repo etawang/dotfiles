@@ -4,7 +4,7 @@ fi
 
 . /usr/local/etc/bash_completion.d/git-completion.bash
 . /usr/local/etc/bash_completion.d/git-prompt.sh
-# . /usr/local/etc/bash_completion.d/tmuxinator.bash
+. /usr/local/etc/bash_completion.d/tmuxinator.bash
 
 # Make the prompt look like this:
 # Mon Apr 02 12:06:50 airbnb (master) $
