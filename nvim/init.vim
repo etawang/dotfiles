@@ -31,7 +31,11 @@ Plug 'junegunn/fzf.vim'
 " Better cpp highlighting
 Plug 'octol/vim-cpp-enhanced-highlight'
 
+" Latex plugin
 Plug 'lervag/vimtex'
+
+" Rust syntax highlighting
+Plug 'rust-lang/rust.vim'
 
 " Visualized marks
 Plug 'kshenoy/vim-signature'

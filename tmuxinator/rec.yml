@@ -43,7 +43,7 @@ root: ~/dev/rec/repos
 # post: tmux -CC attach -t rec
 
 windows:
-  - manage:
+  - rec:
       layout: main-vertical
       panes:
         -

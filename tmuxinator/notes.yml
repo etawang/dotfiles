@@ -48,3 +48,4 @@ windows:
       panes:
         - nvim todo.txt
         -
+        -
