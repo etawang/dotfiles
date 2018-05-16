@@ -56,3 +56,11 @@ windows:
         -
   - treehouse:
       root: ~/dev/work/airlab/repos/treehouse
+  - monorail:
+      root: ~/dev/work/airlab/repos/airbnb
+  - misc:
+      root: ~/dev/work
+      layout: main-vertical
+      panes:
+        -
+        -
