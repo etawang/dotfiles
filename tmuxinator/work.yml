@@ -43,15 +43,10 @@ root: ~/dev/work/airlab
 # post: tmux -CC attach -t work
 
 windows:
-  - manage:
+  - ssh:
       layout: main-vertical
       panes:
         -
-        -
-        -
-  - test:
-      layout: main-vertical
-      panes:
         -
         -
   - treehouse:

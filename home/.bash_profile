@@ -69,7 +69,16 @@ gco() {
   git checkout "$target_branch" && gre "$base_branch"
 }
 
-eval "$(rbenv init -)"
+gcod() {
+  current_branch="$(git rev-parse --abbrev-ref HEAD)"
+  base_branch="master"
+  if [ "$2" ]; then
+    base_branch="$2"
+  fi
+  git checkout "$1"
+  git branch -D "$current_branch"
+  gre "$base_branch"
+}
 
 ssh-role() {
   if [ -z "$1" ]; then
@@ -77,3 +86,5 @@ ssh-role() {
   fi
   al rekey && optica role=^"$1"$ | sed -n 1p | xargs -o ssh
 }
+
+eval "$(rbenv init -)"
