@@ -82,7 +82,7 @@ gcod() {
 
 ssh-role() {
   if [ -z "$1" ]; then
-    echo "Supply an optica role to ssh into"
+    echo "Usage: ssh-role <optica_role>"
   fi
   al rekey && optica role=^"$1"$ | sed -n 1p | xargs -o ssh
 }
