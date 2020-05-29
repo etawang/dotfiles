@@ -185,9 +185,6 @@ nnoremap <silent> <A-]> <C-w>5>
 nnoremap <silent> <A-{> <C-w><
 nnoremap <silent> <A-}> <C-w>>
 
-set undofile
-set undodir=~/.config/nvim/.vimundo
-
 set clipboard=unnamed
 
 " Filetype-specific commands
