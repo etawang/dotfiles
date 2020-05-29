@@ -24,4 +24,3 @@ See `install.sh` for the full list of dependencies. A brief list:
   - [ripgrep](https://github.com/BurntSushi/ripgrep)
   - [base16-shell](https://github.com/chriskempson/base16-shell)
   - [fzf](https://github.com/junegunn/fzf)
-  - [base16-circus](https://github.com/stepchowfun/base16-circus-scheme)

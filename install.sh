@@ -27,7 +27,7 @@ for opt in "$@"; do
 done
 
 # Make sure submodules are up to date.
-cd "$DOTFILES_DIR" && git submodule update --remote --init
+# cd "$DOTFILES_DIR" && git submodule update --remote --init
 
 # Install brew if it doesn't exist. TODO: gate with an if statement
 brew -v > /dev/null 2> /dev/null
@@ -37,20 +37,19 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "Brew installing package dependencies..."
-brew install neovim/neovim/neovim
-brew install tmux
-brew install reattach-to-user-namespace # Needed for copy and paste from tmux in Mac OSX sierra.
-brew install ripgrep
-brew install git bash-completion
-brew install fd
-brew install wget
-
-# It's not necessary to install python and python3 just to get pip, but they're nice to have.
-brew install python3 # Makes pip3 available
-brew install python # Makes pip2 available
-pip3 install --user neovim
-pip2 install --user neovim
-echo "Done!"
+brew install neovim ||
+  brew install tmux ||
+  brew install reattach-to-user-namespace || # Needed for copy and paste from tmux in Mac OSX sierra.
+  brew install ripgrep ||
+  brew install git bash-completion ||
+  brew install fd ||
+  brew install wget ||
+  # It's not necessary to install python and python3 just to get pip, but they're nice to have.
+  brew install python3 || # Makes pip3 available
+  brew install python || # Makes pip2 available
+  pip3 install --user neovim ||
+  pip2 install --user neovim ||
+  echo "Done!"
 
 echo "Installing other dependencies..."
 # Install base16-shell.
@@ -79,13 +78,5 @@ curl -fLo /usr/local/etc/bash_completion.d/tmuxinator.bash --create-dirs \
 echo "Done!"
 
 update_configs
-
-# Install base16-circus.
-echo "Installing color scheme..."
-cp "$DOTFILES_DIR"/base16-circus-scheme/circus/scripts/base16-circus.sh "$CONFIG_DIR"/base16-shell/scripts/
-cp "$DOTFILES_DIR"/base16-circus-scheme/circus/colors/base16-circus.vim "$CONFIG_DIR"/nvim/plugged/base16-vim/colors/
-source ~/.bash_profile
-base16_circus
-echo "Done!"
 
 echo "Successfully installed dotfiles."
