@@ -87,4 +87,8 @@ ssh-role() {
   al rekey && optica role=^"$1"$ | sed -n 1p | xargs -o ssh
 }
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 eval "$(rbenv init -)"
+eval "$(pyenv init -)"

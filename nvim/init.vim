@@ -37,6 +37,10 @@ Plug 'lervag/vimtex'
 " Rust syntax highlighting
 Plug 'rust-lang/rust.vim'
 
+" Typescript and react
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 " Visualized marks
 Plug 'kshenoy/vim-signature'
 
@@ -68,6 +72,9 @@ inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<C-i>"
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 let g:fugitive_github_domains = ['github.com', 'git.musta.ch']
+
+" Standard JS syntax
+let g:syntastic_javascript_checkers = ["standard"]
 
 nnoremap <leader>go :Gbrowse<cr>
 
@@ -158,6 +165,8 @@ set statusline+=%=[%4l/%L]\ %3c
 " Truecolor
 set termguicolors
 
+colorscheme base16-gruvbox-dark-pale
+
 " If using base16-shell
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
@@ -178,6 +187,9 @@ nnoremap <leader>r :call NumberToggle()<cr>
 
 " Turn off highlighting after a search.
 nnoremap <esc> :noh<cr><esc>
+
+" Map ; to :
+nnoremap ; :
 
 " Resize pane widths
 nnoremap <silent> <A-[> <C-w>5<
